@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/main/styles.css">
+</head>
+<body>
+  <img class="img" src="/assets/tileset.png"/>
+  <img class="img" id="characterSprites" src="/assets/character.png"/>
+  <img class="ground" src="/assets/ground.png"/>
+  <img class="img" id="pokeballs" src="/assets/pokeballs.png"/>
+  <img class="npcs" src="/assets/npcs.png"/>
+  <div id="images"></div>
+  <div id="container">
+    <div id="interface">
+      <div id="battleStats"></div>
+      <canvas id="canvas"></canvas>
+      <div id="dialog">
+        <p id="dialogText"></p>
+      </div>
+    </div>
+    <div id="battleUI">
+      <div id="bagContainer"></div>
+      <div id="movesContainer">
+        <div id="movesCont1" class="movesCont"></div>
+        <div id="movesCont2" class="movesCont"></div>
+      </div>
+      <div id="controlContainer"></div>
+    </div>
+    <div id="starterContainer">
+      <div class="startPokemonContainer charmander">
+        <img class="starterImage" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"/>
+        <img class="starterPokeball" src="/assets/pokeball.png"/>
+        <p class="pokemonName">Charmander</p>
+      </div>
+      <div class="startPokemonContainer squirtle">
+        <img class="starterImage" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"/>
+        <img class="starterPokeball" src="/assets/pokeball.png"/>
+        <p class="pokemonName">Squirtle</p>
+      </div>
+      <div class="startPokemonContainer bulbasaur">
+        <img class="starterImage" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"/>
+        <img class="starterPokeball" src="/assets/pokeball.png"/>
+        <p class="pokemonName">Bulbasaur</p>
+      </div>
+    </div>
+  </div>
+  <script src="/main/starters.js"></script>
+  <script src="/main/battle.js"></script>
+  <script src="/main/main.js"></script>
+  <script src="/main/npcFunctions.js"></script>
+</body>
+</html>

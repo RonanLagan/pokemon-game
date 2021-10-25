@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif
+}
+
+#container {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column
+}
+
+#connectForm {
+  width: 50%;;
+  height: 50%;
+  background: #ccc;
+  display: flex;
+  flex-direction: column;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+#connectForm input, button {
+  padding: 10px;
+  border: none;
+  outline: none;
+  background: none;
+  border-bottom: 1px solid black;
+  margin: 20px;
+}
+
+#connectForm button {
+  background: #ff6666;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+#loginText {
+  font-size: 20px;
+}
+
+#err {
+  color: red;
+}

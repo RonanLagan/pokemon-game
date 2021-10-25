@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editeur de niveau</title>
+  <link rel="stylesheet" href="/editor/styles.css">
+</head>
+<body>
+  <img class="img" src="/assets/tileset.png"/>
+  <img class="npcs" src="/assets/npcs.png"/>
+  <div id="container">
+    <div id="ui">
+      <div id="uiContainer">
+        <canvas id="tilemap"></canvas>
+        <br>
+        <label>Selected tile</label>
+        <canvas id="selectedTile"></canvas>
+        <label>tile name</label>
+        <input type="text" id="tileName">
+        <label>solid</label>
+
+        <input type="checkbox" id="solidTile"/>
+        <label>encounter pokemon</label>
+        <input type="checkbox" id="encounter"/>
+        <button id="addTile">Add tile</button>
+        <p>Hold p to select the starting position for the player</p>
+        <div>
+          <p>Hold space to place a door to go to the following scene</p>
+          <label>Scene name: </label>
+          <input type="text" id="sceneName"/>
+        </div>
+      </div>
+    </div>
+    <div id="canvasContainer">
+      <canvas id="canvas"></canvas>
+      <div id="pokemonContainer">
+      </div>
+      <div>
+        <p>Level range</p>
+        <br>
+        <label>Min</label>
+        <br>
+        <input type="text" id="min" value="3"/>
+        <br>
+        <br>
+        <label>Max</label>
+        <input type="text" id="max" value="3"/>
+      </div>
+      <div id="npcContainer">
+        <canvas id="npcSelector"></canvas>
+        <button id="npcTurn">turn<button>
+        <button id="nextNpc">next npc</button>
+        <input type="text" placeholder="npcAction" id="npcAction"/>
+      </div>
+    </div>
+    <br>
+    <input type="text" id="levelName" placeholder="Level name">
+    <button id="saveBtn">Save</button>
+    <button id="layerOne">Layer one</button>
+    <button id="layerTwo">Layer two</button>
+    <label id="layerLabel">1</label>
+    <br>
+    <p id="saved"></p>
+  </div>
+  <script src="/editor/main.js"></script>
+</body>
+</html>

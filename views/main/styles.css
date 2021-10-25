@@ -1,0 +1,299 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+img {
+  display: none;
+}
+
+#images {
+  display: none;
+}
+
+#container {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+canvas {
+  border: 1px solid black;
+}
+
+#starterContainer {
+  display: none;
+  border: 1px solid black;
+  width: 512px;
+  height: 512px;
+  background: black;
+}
+
+#dialog {
+  background: #222244;
+  height: 75px;
+  width: 512px;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+#dialog p {
+  color: white;
+}
+
+.startPokemonContainer {
+  flex: 1;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.4;
+}
+
+.starterPokeball {
+  width: 100px;
+  height: 100px;
+  display: block;
+  animation: moveStarterPokeball 0.5s infinite;
+  animation-play-state: paused;
+  transform: rotate(0deg);
+}
+
+.starterImage {
+  width: 150px;
+  height: 150px;
+  display: block;
+}
+
+.pokemonName {
+  color: white;
+}
+
+.startPokemonContainer:hover {
+  opacity: 1;
+}
+
+.startPokemonContainer:hover > .starterPokeball {
+  animation-play-state: running;
+}
+
+@keyframes moveStarterPokeball {
+  0% {
+    transform: rotate(0deg)
+  } 25% {
+    transform: rotate(20deg)
+  } 50% {
+    transform: rotate(0deg)
+  } 75% {
+    transform: rotate(-20deg)
+  } 100% {
+    transform: rotate(0deg)
+  }
+}
+
+#battleUI {
+  width: 512px;
+  height: 512px;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+#movesContainer {
+  position: relative;
+  flex: 5;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+#controlContainer {
+  position: relative;
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.movesCont {
+  flex: 1;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.move {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  margin: 10px;
+  border-radius: 20px;
+}
+
+.move p {
+  font-weight: bold;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#battleStats {
+  width: 512px;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.runBtn {
+  flex: 5;
+  background: skyblue;
+}
+
+.bagBtn {
+  flex: 1;
+  background: yellow;
+}
+
+#controlContainer div {
+  margin: 10px;
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+#bagContainer {
+  display: none;
+  flex: 5;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.bagBackBtn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ff4444;
+}
+
+.bagItem {
+  width: 506px;
+  height: 130px;
+  background: grey;
+  border-right: 3px solid yellow;
+  border-left: 3px solid yellow;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.hpContainer {
+  width: 200px;
+  height: 20px;
+  position: relative;
+  border: 1px solid black;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.pokemonStat {
+  display: flex;
+}
+
+.hp {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  height: 100%;
+  width: 100%;
+  background: green;
+  transition: 0.5s ease-in-out;
+}
+
+.bug {
+  background: green;
+}
+
+.grass {
+  background: greenyellow;
+}
+
+.normal {
+  background: grey;
+}
+
+.dark {
+  background: #333;
+}
+
+.dragon {
+  background: #44aaaa;
+}
+
+.electric {
+  background: yellow;
+}
+
+.fighting {
+  background: brown;
+}
+
+.fire {
+  background: red;
+}
+
+.flying {
+  background: #aaaaff;
+}
+
+.ghost {
+  background: purple;
+}
+
+.ground {
+  background: brown;
+}
+
+.ice {
+  background: lightblue;
+}
+
+.poison {
+  color: purple;
+}
+
+.pyschic {
+  color: pink;
+}
+
+.rock {
+  color: brown;
+}
+
+.steel {
+  color: lightgrey;
+}
+
+.water {
+  color: blue;
+}
