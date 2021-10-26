@@ -20,6 +20,7 @@ class Battle {
     this.pokeballCaught = false;
     this.pokeballsSprite = document.getElementById("pokeballs");
     this.pokeballAnimationRunningFor = 0;
+    this.isAi = true;
   };
 
   getMoves() {
@@ -192,6 +193,9 @@ class Battle {
       this.myTurn = false;
       this.updateHp();
       let myName = this.mine[this.myIndex].name
+      if (this.isAi === false) {
+        socket.emit("attack", {name: this.againstName, damage: damage, moveName: name});
+      }
       writeDialog(`${myName} used ${name}!`);
     } else if (!me && !this.myTurn && !this.pokeballThrown) {
       if (damage == undefined) {

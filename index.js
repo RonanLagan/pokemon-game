@@ -1,4 +1,5 @@
 const express = require("express");
+const http = require("http");
 const path = require("path");
 const fs = require("fs");
 const axios = require("axios");
@@ -10,6 +11,10 @@ axios.get("https://pokeapi.co/api/v2/pokemon?limit=151").then((r) => {
 })
 
 const app = express();
+const server = http.createServer(app);
+const {Server} = require("socket.io");
+const io = new Server(server);
+
 app.use(express.static(path.join(__dirname, "views")));
 app.use(express.json())
 
@@ -99,6 +104,54 @@ app.get("/level/:levelName", (req, res) => {
   res.send(level);
 });
 
-app.listen(4000, () => {
+let socketUsers = {};
+
+io.on("connection", (socket) => {
+  let user;
+  socket.on("connectUser", (data) => {
+    let username = data.name;
+    user = username;
+    if (socketUsers[username] == undefined) {
+      socketUsers[username] = [socket.id];
+    } else {
+      socketUsers[username].push(socket.id);
+    }
+    console.log(socketUsers);
+  });
+
+  socket.on("checkOnline", (data) => {
+    let name = data.name;
+    let isOnline = socketUsers[name] != undefined;
+    io.to(socket.id).emit("isOnline", {name, isOnline});
+    if (isOnline) {
+      socketUsers[name].forEach(s => {
+        io.to(s).emit("wantsBattle", {name: user, pokemons: data.pokemons});
+      })
+    }
+  });
+
+  socket.on("battleStart", (data) => {
+    console.log(data);
+    let {name} = data;
+    socketUsers[name].forEach(s => {
+      io.to(s).emit("battleStart", {name: user, pokemons: data.pokemons});
+    })
+  })
+
+  socket.on("disconnect", () => {
+    if (user != undefined) {
+      let i = socketUsers[user].findIndex(e => e == socket.id);
+      socketUsers[user].splice(i, 1);
+    }
+  });
+
+  socket.on("attack", (data) => {
+    socketUsers[data.name].forEach(s => {
+      io.to(s).emit("attack", data);
+    })
+  })
+});
+
+server.listen(4000, () => {
   console.log("Server started");
 })

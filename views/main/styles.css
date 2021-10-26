@@ -230,6 +230,43 @@ canvas {
   transition: 0.5s ease-in-out;
 }
 
+#battleRequest {
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  top: 40%;
+  left: -200px;
+  transition: 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: white;
+  border-radius: 15px;
+  border: 1px solid black;
+}
+
+#battleReqButtons {
+  margin-top: 15px;
+}
+
+#battleRequest button {
+  width: 60px;
+  height: 30px;
+  border: 1px solid black;
+  outline: none;
+  color: white;
+  font-weight: bold
+}
+
+#acceptBattle {
+  background: green;
+}
+
+#ignoreBattle {
+  background: #ee6666;
+}
+
 .bug {
   background: green;
 }

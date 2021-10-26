@@ -1,6 +1,10 @@
 let pokemonEncounters = {};
 let pokemons;
+let grid = [];
 
+const tiles = [
+    { name: "grass", xPos: 16, yPos: 32 },
+  ]
 window.onload = () => {
   // Gets pokemon
   (() => {
@@ -80,11 +84,6 @@ window.onload = () => {
 
   let img = document.getElementsByClassName("img")[0];
 
-
-  const tiles = [
-    { name: "grass", xPos: 16, yPos: 32 },
-  ]
-
   let doors = [];
 
   function drawTile(name, xPos, yPos) {
@@ -94,7 +93,6 @@ window.onload = () => {
 
   let xSize = 32;
   let ySize = 32;
-  let grid = [];
   let layerTwo = [];
   for (let y = 0; y < ySize; y++) {
     grid.push([]);

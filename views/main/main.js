@@ -5,6 +5,8 @@
 let level;
 let userData;
 
+var socket = io();
+
 function loadLevel(name) {
   const xhr = new XMLHttpRequest();
   xhr.open("GET", `/level/${name}`);
@@ -30,6 +32,7 @@ window.onload = () => {
     x.open("GET", "/user-data");
     x.onload = () => {
       userData = JSON.parse(x.response);
+      socket.emit("connectUser", {name: userData.username});
       if (userData.pokemons.length == 0) {
         chooseStarterPokemon()
       } else {
@@ -365,7 +368,7 @@ function drawCharacter(x, y, direction) {
   level.doors.forEach(d => {
     let f = level.doors.find(door => door.x == playerX && door.y == playerY+1);
     if (f != undefined) {
-      let name = d.name;
+      let name = f.name;
       loadLevel(name)
     }
   });
@@ -409,12 +412,14 @@ function gameLoop() {
       }
 
       if (currentBattle.myTurn == false && currentBattle.aiWaitingMove == false) {
-        currentBattle.aiWaitingMove = true;
-        setTimeout(() => {
-          if (currentBattle != undefined) {
-            currentBattle.aiMakeMove();
-          }
-        }, 3000)
+        if (currentBattle.isAi == true) {
+          currentBattle.aiWaitingMove = true;
+          setTimeout(() => {
+            if (currentBattle != undefined) {
+              currentBattle.aiMakeMove();
+            }
+          }, 3000)
+        }
       }
       if (currentBattle.outcome == "win") {
         Battle.end();
